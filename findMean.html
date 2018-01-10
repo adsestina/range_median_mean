@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Javascript</title>
+<meta charset="utf-8">
+</head>
+<body>
+<script>
+
+var repeat, score = [];
+
+function getScores() {
+    while (repeat !== "n") {
+        score.push(parseInt(prompt("Please input a score")));
+        repeat = prompt("Would you like to keep entering scores? y/n");
+    }
+}
+
+function mean() {
+    var total = 0, i;
+    for (i = 0; i < score.length; i += 1) {
+        total += score[i];
+    }
+    mean = total / score.length;
+    return mean
+}
+ 
+function median() {
+    var median = 0, numsLen = score.length;
+    score.sort();
+ 
+    if (
+        numsLen % 2 === 0
+    ) {
+        median = (score[numsLen / 2 - 1] + score[numsLen / 2]) / 2;
+    } else {
+        median = score[(numsLen - 1) / 2];
+    }
+ 	return median
+
+}
+function range() {
+    score.sort();
+    return [score[0], score[score.length - 1]];
+}
+
+
+function showScores() {
+    alert("The range of the scores is " + range() + "\nYou entered " + score.length + " scores" + "\nThe mean of those scores is: " + mean() + "\nThe median of the scores is " + median());
+}
+
+getScores();
+showScores();
+
+</script>
+
+</body>
+</html>
